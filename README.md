@@ -1,40 +1,45 @@
-# 🦙 Deal Intel: AI-Powered Top 5 Deal Finder
+# 🧠 Deal Intel: Agentic AI System for Price Prediction and Deal Notifications
 
-**Deal Intel** is an AI-driven autonomous agent system that scrapes product prices from RSS feeds and identifies the **top 5 best-value deals** using an ensemble of fine-tuned and frontier models. When the right opportunity is found, it sends **real-time push notifications** via [Pushover](https://pushover.net/).
-
----
-
-## 🔍 Key Features
-
-- **Multimodal Agent Framework** with:
-  - 🧠 *Specialist LLaMA 3.1 model* fine-tuned using QLoRA + PEFT.
-  - 📚 *RAG-based Frontier Model* for knowledge-enhanced price understanding.
-  - 🌲 *Random Forest + XGBoost ensemble*, combined via Linear Regression.
-- 📰 *RSS Feed Scraping* to monitor real-time product listings.
-- 📈 *Vector Database Visualization* for embeddings & interpretability.
-- 📲 *Push Notifications* via Pushover for top 5 deals.
-- 🧩 Modular architecture with separate scanning, RAG, pricing, and messaging agents.
-- 🖥️ *Gradio UI* for interactive monitoring and analysis.
+An end-to-end **agent-based AI system** that autonomously scans online product deals, predicts accurate prices using an ensemble of intelligent models (including LLMs and ML models), and notifies users about lucrative discounts via messaging services.
 
 ---
 
-## 🧠 System Architecture
+## 🚀 Features
 
-                       +---------------------+
-                       |  RSS Feed Scanner   |
-                       +---------------------+
-      +--------------------------↓-------------------------------------------------------------------+
-      |     Price Prediction Ensemble (Specialist Agent + RAG Frontier Model + RF + GB + LR)         |
-      +--------------------------↓-------------------------------------------------------------------+
-                      +-----------------------+
-                      |  Decision + Ranking    |
-                      +-----------↓-----------+
-                                  ↓
-                      +-----------------------+
-                      |   Top 5 Deals Output   |
-                      +-----------------------+
-                                  ↓
-                      +-----------------------+
-                      |  Push Notification     |
-                      |   via Pushover API     |
-                      +-----------------------+
+- 🕵️‍♂️ **Scanner Agent**: Collects live product listings and deal metadata.
+- 🧠 **Price Prediction Agents**:
+  - **Specialist Agent**: Fine-tuned LLaMA model using QLoRA.
+  - **Frontier Agent**: GPT‑based RAG (Retrieval-Augmented Generation) with ChromaDB.
+  - **Random Forest Agent**: Lightweight ML-based price estimator.
+  - **Gradient Boosting Agent** 🆕: `GradientBoostingRegressor` for more robust regression.
+- 🧮 **Ensemble Agent**: Combines predictions using linear regression or weighted averaging.
+- 📡 **Planning Agent**: Orchestrates agent flow, deduplication, and scheduling.
+- 🔔 **Messaging Agent**: Sends real-time alerts using Pushover or Twilio.
+- 🌐 **Gradio UI**: Optional interface for visualization and interaction.
+
+---
+
+## 🏗️ Architecture Overview
+
+```plaintext
+            ┌────────────┐
+            │  Scanner   │──────┐
+            └────────────┘      │
+                                ▼
+                       ┌────────────────┐
+                       │ Planning Agent │
+                       └────────────────┘
+                                ▼
+     ┌──────────────┬─────────────┬──────────────┬────────────────────┐
+     ▼              ▼             ▼              ▼
+Specialist     Frontier      Random Forest    Gradient Boosting
+ (LLaMA)         (GPT‑RAG)        (Sklearn)        (Sklearn)
+     └──────────────┴─────────────┴──────────────┴────────────────────┘
+                        ▼
+               ┌──────────────┐
+               │  Ensemble    │
+               └──────────────┘
+                        ▼
+                 ┌────────────┐
+                 │ Messaging  │───► Pushover
+                 └────────────┘
