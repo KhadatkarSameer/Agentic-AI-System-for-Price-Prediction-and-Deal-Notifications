@@ -81,13 +81,7 @@ An end-to-end **agent-based AI system** that autonomously scans online product d
 Run the full agent pipeline:
 
 ```bash
-python main.py
-```
-
-To launch the Gradio interface:
-
-```bash
-python gradio_app.py
+python price_is_right_final.py
 ```
 
 ---
@@ -130,13 +124,13 @@ Set alert thresholds and frequency in `planner_agent.py`.
 │   ├── random_forest_agent.py
 │   ├── gradient_boosting_agent.py
 │   └── ensemble_agent.py
-├── core/
-│   ├── planner.py
-│   ├── notifier.py
-│   └── utils.py
-├── gradio_app.py
-├── main.py
-├── requirements.txt
+├── items.py
+├── log_utils.py
+├── deal_agent_framework.py
+├── price_is_right_final.py
+├── pricer_service.py
+├── testing.py
+├── environment.yml
 └── README.md
 ```
 
