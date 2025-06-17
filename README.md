@@ -55,15 +55,14 @@ An end-to-end **agent-based AI system** that autonomously scans online product d
    cd Agentic-AI-System-for-Price-Prediction-and-Deal-Notifications
    ```
 
-2. **Set up virtual environment**  
+2. **Create conda environment**  
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   conda env create -f environment.yml
    ```
 
-3. **Install dependencies**  
+3. **Activate the Environment**  
    ```bash
-   pip install -r requirements.txt
+   conda activate llms
    ```
 
 4. **Set environment variables**  
@@ -106,20 +105,16 @@ python gradio_app.py
 
 ## 📊 Ensemble Strategy
 
-The **Ensemble Agent** combines predictions from all four models using:
+The **Ensemble Agent** combines predictions from all four models using **Linear Regression** model.
 
-- **Weighted average** (default)
-- Or **Stacked linear regression** for dynamic learning
-
-Configure strategy and weights in `ensemble_agent.py`.
+Configure strategy in `ensemble_agent.py`.
 
 ---
 
 ## 📤 Notifications
 
 Supported providers:
-- **Pushover** (default)
-- **Twilio** (SMS optional)
+- **Pushover**
 
 Set alert thresholds and frequency in `planner_agent.py`.
 
